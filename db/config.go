@@ -36,12 +36,12 @@ func OpenDB()error{
 	DB,err =sql.Open("mysql",os.Getenv("DB_DSN_URI"))
 
 	if err != nil {
-    return err
-  }
+    	return err
+  	}
 
 	DB.SetMaxOpenConns(10)
-  DB.SetMaxIdleConns(10)
-  DB.SetConnMaxLifetime(time.Minute * 5)
+  	DB.SetMaxIdleConns(10)
+  	DB.SetConnMaxLifetime(time.Minute * 5)
 
 	return nil
 }
