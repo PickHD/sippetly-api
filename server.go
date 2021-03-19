@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-  godotenv.Load()
+  	godotenv.Load()
 	
 	go func() {
 		db.Init()
