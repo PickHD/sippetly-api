@@ -3,8 +3,8 @@ package db
 import (
 	"database/sql"
 	"log"
-	"time"
 	"os"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/golang-migrate/migrate"
@@ -15,18 +15,18 @@ import (
 var DB *sql.DB
 
 func Init(){
-		db, _ := sql.Open("mysql",os.Getenv("DB_DSN_URI"))
-    driver, _ := mysql.WithInstance(db, &mysql.Config{})
-    m, _ := migrate.NewWithDatabaseInstance(
-        "file://db/migrations",
-        "mysql", 
-        driver,
-    )
-		defer db.Close()
+	db, _ := sql.Open("mysql",os.Getenv("DB_DSN_URI"))
+	driver, _ := mysql.WithInstance(db, &mysql.Config{})
+	m, _ := migrate.NewWithDatabaseInstance(
+			"file://db/migrations",
+			"mysql", 
+			driver,
+	)
+	defer db.Close()
 
-		m.Steps(2)
+	m.Steps(2)
 
-		log.Println("Databases Successfully Migrated!")
+	log.Println("Databases Successfully Migrated!")
    
 }
 
